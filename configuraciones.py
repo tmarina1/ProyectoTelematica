@@ -1,0 +1,6 @@
+PUERTO = 8080
+PUERTOI = 80
+HOST = '127.0.0.1'
+FORMATO = 'utf-8'
+IP = ''
+TAMAÑO = 4050
