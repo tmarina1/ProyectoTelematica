@@ -97,7 +97,7 @@ En otras palabras, cada que se hace una nueva petición asigna de 1 en 1 cada se
 
 En este archivo nos encargamos de la comunicación cliente/servidor, haciendo uso también de los anteriores 2 archivos.py creados.
 
-en este caso debemos hacer las siguientes importaciones:
+En este caso debemos hacer las siguientes importaciones:
 
 ```python
 import socket
@@ -116,9 +116,9 @@ import RoundRobinn
 
 Luego se hace la creación de las funciones
 
-#### funciones:
+#### Funciones:
 
-- creamos la función proxy() encargada de crear el socket para los clientes, además de escuchar las peticiones de los clientes en el host y puerto que se le indique en el archivo configuraciones.py y de crear el hilo con el que se permitirá la conexión y manejo de múltiples usuarios.
+- Creamos la función proxy() encargada de crear el socket para los clientes, además de escuchar las peticiones de los clientes en el host y puerto que se le indique en el archivo configuraciones.py y de crear el hilo con el que se permitirá la conexión y manejo de múltiples usuarios.
 
 ```python
 def proxy():
@@ -165,7 +165,7 @@ def multiUsuario(conectado, direccion):
       break
 ```
 
--La siguiente función se encarga de conectarse con la instancia dependiendo del servidor que le arroje el balanceador de carga, enviarle a la instancia la petición del usuario y recibir la respuesta que esta lede para así posteriormente enviarle dicha respuesta al usuario. Además crear y almacenar datos en la cache, almacenando el tiempo en ese instante y la respuesta recibió de la instancia, para que así si el usuario realiza la misma petición el proxy no le deba preguntar a la instancia si no que pueda consultar los archivos generados por la cache y tomar la información que solicita el usuario de estos, por ultimo verifica si la cache ya lleva demasiado tiempo de existencia mediante un delta de tiempo, de ser el caso elimina el archivo de la cache y recure a preguntarle a la instancia por la petición del usuario.
+- La siguiente función se encarga de conectarse con la instancia dependiendo del servidor que le arroje el balanceador de carga, enviarle a la instancia la petición del usuario y recibir la respuesta que esta lede para así posteriormente enviarle dicha respuesta al usuario. Además crear y almacenar datos en la cache, almacenando el tiempo en ese instante y la respuesta recibió de la instancia, para que así si el usuario realiza la misma petición el proxy no le deba preguntar a la instancia si no que pueda consultar los archivos generados por la cache y tomar la información que solicita el usuario de estos, por ultimo verifica si la cache ya lleva demasiado tiempo de existencia mediante un delta de tiempo, de ser el caso elimina el archivo de la cache y recure a preguntarle a la instancia por la petición del usuario.
 
 ```python
 def coneccionInstancia(conectado, contenidoHttp, solicitud):
@@ -259,7 +259,7 @@ def cache(solicitud, response, tiempo):
   f.close()
 ```
 
-- por último para su ejecución final se hace llamado al proxy en un main, para que funcione de la manera que se requiere.
+- Por último para su ejecución final se hace llamado al proxy en un main, para que funcione de la manera que se requiere.
 
 ```python
 if __name__ == "__main__":
@@ -278,14 +278,14 @@ if __name__ == "__main__":
 
 # DESARROLLADO POR
 
-[Tomás Marín Aristizabal](https://github.com/tmarina1).  
-[Juan Andrés Vera Álvarez](https://github.com/Vera3588).  
-[Samuel Salazar Salazar](https://github.com/ssalazar11).
+[Tomás Marín Aristizabal](https://github.com/tmarina1)
+[Juan Andrés Vera Álvarez](https://github.com/Vera3588)
+[Samuel Salazar Salazar](https://github.com/ssalazar11)
 
 # REFERENCIAS
 
-[TCP Sockets](https://realpython.com/python-sockets/#tcp-sockets).  
- [Solicitudes HTTP](https://unipython.com/solicitudes-http-en-python-con-requests/).  
-[Sockets server](https://docs.python.org/es/3/library/socketserver.html).  
-[Timer functions](https://www.delftstack.com/es/howto/python/python-timer-functions/).  
-[OS module](https://www.tutorialsteacher.com/python/os-module#:~:text=The%20OS%20module%20in%20Python,with%20the%20underlying%20operating%20system).
+[TCP Sockets](https://realpython.com/python-sockets/#tcp-sockets)
+[Solicitudes HTTP](https://unipython.com/solicitudes-http-en-python-con-requests/)
+[Sockets server](https://docs.python.org/es/3/library/socketserver.html)
+[Timer functions](https://www.delftstack.com/es/howto/python/python-timer-functions/)
+[OS module](https://www.tutorialsteacher.com/python/os-module#:~:text=The%20OS%20module%20in%20Python,with%20the%20underlying%20operating%20system)
