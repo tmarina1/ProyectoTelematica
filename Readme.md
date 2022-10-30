@@ -28,7 +28,7 @@ El proxy inverso implementado se encarga de interceptar las peticiones del clien
 
 ## Lenguajes y programas
 
-El lenguaje de programación que usamos fue Python debido a la capacidad y el manejo que tiene de los hilos, hace que sea un poco más sencillo de entender la técnica y la aplicabilidad, Ademas de contar con un garbage colector que facilita el uso e interación con el lenguaje de programación.
+El lenguaje de programación que usamos fue Python debido a la capacidad y el manejo que tiene de los hilos, hace que sea un poco más sencillo de entender la técnica y la aplicabilidad, además de contar con un garbage colector que facilita el uso e interación con el lenguaje de programación.
 
 El programa que usamos es Visual Studio Code porque tiene muy buenas extensiones las cuales hacen que codificar sea más cómodo y tiene muy buen manejo de las ejecuciones de múltiples lenguajes.
 
