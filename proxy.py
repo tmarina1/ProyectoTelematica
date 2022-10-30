@@ -79,7 +79,6 @@ def coneccionInstancia(conectado, contenidoHttp, solicitud):
     socketN.close()
   else:
     RoundRobin = RoundRobinn.roundRobin()
-    print(RoundRobin)
     socketN.connect((RoundRobin, configuraciones.PUERTOI))
     print(contenidoHttp)
     socketN.sendall(contenidoHttp)

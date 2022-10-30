@@ -271,3 +271,29 @@ GET /test/test.html HTTP/1.1
 Usuario conectado ('127.0.0.1', 52492) con : <socket.socket fd=140, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8080), raddr=('127.0.0.1', 52492)>
 GET /test/img/2017-12-19-19-22-29.jpg HTTP/1.1
 GET /favicon.ico HTTP/1.1
+Usuario conectado ('127.0.0.1', 59135) con : <socket.socket fd=312, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8080), raddr=('127.0.0.1', 59135)>
+Usuario conectado ('127.0.0.1', 59136) con : <socket.socket fd=280, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8080), raddr=('127.0.0.1', 59136)>
+GET /test/test.html HTTP/1.1
+GET /test/img/2017-12-19-19-22-29.jpg HTTP/1.1
+GET /favicon.ico HTTP/1.1
+Usuario conectado ('127.0.0.1', 59151) con : <socket.socket fd=440, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8080), raddr=('127.0.0.1', 59151)>
+GET /test/test.html HTTP/1.1
+GET /test/img/2017-12-19-19-22-29.jpg HTTP/1.1
+GET /favicon.ico HTTP/1.1
+Usuario conectado ('127.0.0.1', 59159) con : <socket.socket fd=476, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8080), raddr=('127.0.0.1', 59159)>
+GET /test/test.html HTTP/1.1
+GET /test/img/2017-12-19-19-22-29.jpg HTTP/1.1
+GET /favicon.ico HTTP/1.1
+GET /test/test.html HTTP/1.1
+Usuario conectado ('127.0.0.1', 59160) con : <socket.socket fd=312, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8080), raddr=('127.0.0.1', 59160)>
+GET /test/img/2017-12-19-19-22-29.jpg HTTP/1.1
+GET /favicon.ico HTTP/1.1
+GET /test/test.html HTTP/1.1
+GET /test/img/2017-12-19-19-22-29.jpg HTTP/1.1
+GET /favicon.ico HTTP/1.1
+GET /test/test.html HTTP/1.1
+GET /test/img/2017-12-19-19-22-29.jpg HTTP/1.1
+GET /favicon.ico HTTP/1.1
+GET /test/test.html HTTP/1.1
+GET /test/img/2017-12-19-19-22-29.jpg HTTP/1.1
+GET /favicon.ico HTTP/1.1

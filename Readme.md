@@ -17,6 +17,8 @@
 
 # INTRODUCCIÓN
 
+En este documento encontrara la explicación del funcionamiento del proyecto desarrollado, algunas características relevantes con las que cuanta son:
+
 Este proyecto está basado en una arquitectura cliente/servidor utilizando la API sockets, haciendo uso de la técnica del multi hilo, usando un algoritmo balanceador de carga llamado round-robbin, un registro de cache y creando un proxy inverso.
 
 Basado en lo anteriormente mencionado, el algoritmo balanceador de
@@ -24,13 +26,15 @@ carga 'round-robin', se encarga de determinar cuál servidor dentro de un conjun
 
 El proxy inverso implementado se encarga de interceptar las peticiones del cliente y la envía al servidor anteriormente asignado por el round-robbin que cuenta con la capacidad de procesar esa información para luego ser recibida por el proxy y enviársela al cliente.
 
+Además de lo anterior se cuenta con un registro o almacenamiento de cache, que permite la consulta rápida de información previamente buscada, como también cuenta con un proceso de eliminación de cache cuando se cumple un delta de tiempo establecido.
+
 # DESARROLLO
 
 ## Lenguajes y programas
 
-El lenguaje de programación que usamos fue Python debido a la capacidad y el manejo que tiene de los hilos, hace que sea un poco más sencillo de entender la técnica y la aplicabilidad, además de contar con un garbage colector que facilita el uso e interación con el lenguaje de programación.
+El lenguaje de programación que usamos fue Python debido a la capacidad y el manejo que tiene de los hilos, hace que sea un poco más sencillo de entender la técnica y la aplicabilidad, además de contar con un garbage colector que facilita el uso e interacción con el lenguaje de programación.
 
-El programa que usamos es Visual Studio Code porque tiene muy buenas extensiones las cuales hacen que codificar sea más cómodo y tiene muy buen manejo de las ejecuciones de múltiples lenguajes.
+El editor de texto que usamos es Visual Studio Code porque tiene muy buenas extensiones las cuales hacen que codificar sea más cómodo y tiene muy buen manejo de las ejecuciones de múltiples lenguajes.
 
 ## Uso y creación
 
@@ -42,7 +46,7 @@ En este creamos 3 archivos.py.
 
 ### Archivo configuraciones
 
-En este archivo asignamos como variables las necesarias para configurar la conexión con el servidor, pasándole los puertos del usuario y las instancias, el formato correspondiente, un tamaño para el buffer y el host del cliente.
+En este archivo asignamos como variables las necesarias para configurar la conexión con el cliente y servidor, pasándole los puertos del usuario y las instancias, el formato correspondiente, un tamaño para el buffer y el host del cliente.
 
 ```python
 
@@ -90,13 +94,13 @@ if __name__ == "__main__":
 
 ```
 
-En resumen lo que hace es guardar los servidores en un arreglo, luego abrir y crear un archivo txt llamado robin.txt, dentro de este tiene un numero 0, luego se comprueba que numero tiene ese archivo en caso de ser 0, lo modifica a 1, y trae la posición 0 del arreglo anteriormente creado es decir el primer servidor, luego como el archivo tiene un 1, al leerlo, modifica el valor a 2, y trae la posición 1 del arreglo anteriormente creado es decir el segundo servidor, y por ultimo lee en el robin.txt un 2, lo que hace es modificarlo nuevamente a 0, y leer la tercera posición del arreglo, es decir, el tercere servidor, y así sucesivamente ya que nuevamente está en cero.
+En resumen lo que hace es guardar los servidores en un arreglo, luego abrir y crear un archivo txt llamado robin.txt, dentro de este se tiene un numero 0, luego se comprueba que numero tiene ese archivo en caso de ser 0, lo modifica a 1, y trae la posición 0 del arreglo anteriormente creado es decir el primer servidor, luego en la siguiente petición como el archivo tiene un 1, al leerlo, modifica el valor a 2, y trae la posición 1 del arreglo anteriormente creado es decir el segundo servidor, y por ultimo lee en el robin.txt un 2, lo que hace es modificarlo nuevamente a 0, y leer la tercera posición del arreglo, es decir, el tercere servidor, y así sucesivamente ya que nuevamente está en cero.
 
 En otras palabras, cada que se hace una nueva petición asigna de 1 en 1 cada servidor.
 
 ### Archivo proxy
 
-En este archivo nos encargamos de la comunicación cliente/servidor, haciendo uso también de los anteriores 2 archivos.py creados.
+En este archivo nos encargamos de la comunicación cliente/proxy y proxy/servidor, haciendo uso también de los anteriores 2 archivos.py creados.
 
 En este caso debemos hacer las siguientes importaciones:
 
@@ -143,7 +147,7 @@ def proxy():
   sockets.close()
 ```
 
-- Esta función permite conectar múltiples usuarios al servidor al mismo tiempo, como también es el encargado de recibir la petición del usuario y de enviar dicha petición al siguiente método que es el encargado de la conexión con la instancia.
+- La función que se muestra a continuación permite conectar múltiples usuarios al servidor al mismo tiempo, como también es el encargado de recibir la petición del usuario y de enviar dicha petición al siguiente método que es el encargado de la conexión con la instancia.
 
 ```python
 def multiUsuario(conectado, direccion):
@@ -247,7 +251,7 @@ def loggin(texto):
   f.close()
 ```
 
-- Esta función es la encargada de crear el archivo de cache, para administrarlo luego en la función de coneccionInstancia(), lo que hace es almacenar un archivo con la información que el proxy recibe de la instancia y con el tiempo de cuándo se creó para luego poder hacer la eliminación de la cache si se da el caso.
+- Esta función es la encargada de crear el archivo de cache, para administrarlo luego en la función de coneccionInstancia(), lo que hace es almacenar un archivo con la información que el proxy recibe de la instancia y con el tiempo de cuándo se creó para luego poder hacer la eliminación de la cache si se da el caso. El archivo generado cuenta con una estructura en donde la primera línea del archivo se almacena el tiempo y de la segunda línea en adelante se almacena la respuesta obtenida por la instancia.
 
 ```python
 def cache(solicitud, response, tiempo):
@@ -270,9 +274,9 @@ if __name__ == "__main__":
 # CONCLUSIONES
 
 - Logramos entender el funcionamiento y cómo hacer uso de los sockets, como escuchar, conectar, recibir y demás funcionalidades de los sockets.
-- Aprendimos cómo crear un proxy inverso, su aplicabilidad y cómo se usarlo de intermediario en la conexión entre cliente/servidor.
+- Aprendimos cómo crear un proxy inverso, su aplicabilidad y cómo usarlo de intermediario en la conexión entre cliente/servidor.
 - Logramos entender el funcionamiento del algoritmo de balanceo de carga round robin y la importancia de tener un balanceador de carga a la hora de realizar consultas en servidores.
-- Entendimos el funcionamiento e importancia de una cache, ya que permite la consulta rapida de información que fue previamente consultada.
+- Entendimos el funcionamiento e importancia de una cache, ya que permite la consulta rápida de información que fue previamente consultada.
 - Logramos apreciar la importancia de eliminar la cache después de un tiempo determinado, debido a que la información contenida en las páginas puede cambiar en poco tiempo por lo cual de no eliminar la cache cada cierto tiempo estaríamos mostrándole al usuario datos erróneos.
 - Entendimos la importancia de un log, para así tener todas las peticiones y respuestas entre los clientes y el servidor, para manejar de manera más sencilla algunos posibles errores y estar al tanto de lo que ocurre entre las comunicaciones entre las entidades.
 - Hubo muy buen trabajo en equipo y buena coordinación, por lo que la práctica se pudo hacer y entender de manera clara.
