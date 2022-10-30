@@ -1,5 +1,5 @@
 def roundRobin():
-  listaInstancias = ['44.202.236.64', '44.202.236.64', '44.202.236.64']
+  listaInstancias = ['44.211.223.30', '44.211.223.30', '44.211.223.30']
 
   with open("robin.txt", 'r') as f:
     i = f.readline()

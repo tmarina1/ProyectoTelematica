@@ -8,7 +8,7 @@ import RoundRobinn
 def proxy():
   sockets = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
   sockets.bind((configuraciones.HOST, configuraciones.PUERTO))
-  sockets.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) #configurar el tipo de socket
+  sockets.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) 
   print(f'Escuchando peticiones en el puerto {configuraciones.PUERTO}')
   sockets.listen(5)
 
